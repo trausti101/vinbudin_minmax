@@ -1,9 +1,6 @@
-import(httr)
-import(jsonlite)
-import(dplyr)
-import(tibble)
-import(modules)
-import(magrittr)
+library(httr)
+library(jsonlite)
+library(tidyverse)
 
 
 
@@ -31,3 +28,9 @@ fetch <- function() {
   
   return(data)
 }
+
+all <- fetch() %>%
+  arrange(AlcoholPricePer_mL)
+
+categories <- all %>%
+  split(~ProductCategory)
